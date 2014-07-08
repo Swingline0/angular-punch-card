@@ -1,6 +1,6 @@
 angular.module "punchCard", []
 
-angular.module("punchCard").directive "punchCard" , ->
+angular.module("punchCard").directive "punchCard", ($timeout) ->
     restrict: "AE"
 
     scope:
@@ -8,7 +8,7 @@ angular.module("punchCard").directive "punchCard" , ->
         plural: "@"
         singular: "@"
 
-    link: ($scope) ->
+    link: ($scope, $element, $attrs) ->
         $scope.days = [
             "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
         ]
@@ -27,9 +27,14 @@ angular.module("punchCard").directive "punchCard" , ->
             else
                 $scope.plural || "events"
 
+        $scope.makeVisible = (n) ->
+            $timeout (-> $scope.isVisible = true), 20
+
+        $scope.isVisible = $attrs.animate == undefined
+
     template: """
-        <div id="punch-card">
-            <div class="punch-card-day" ng-repeat='day in days'>
+        <div id="punch-card" ng-class="{visible: isVisible}">
+            <div class="punch-card-day" ng-init="makeVisible()" ng-repeat='day in days'>
                 <div class="punch-card-day-name">
                     <div class="punch-card-day-name-label">{{ day }}</div>
                 </div>

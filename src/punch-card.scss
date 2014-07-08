@@ -111,6 +111,15 @@
                 left: 0;
                 margin: auto;
                 z-index: 2;
+                -webkit-transform:scale(0);
+                   -moz-transform:scale(0);
+                    -ms-transform:scale(0);
+                     -o-transform:scale(0);
+                        transform:scale(0);
+                -webkit-transition:all 250ms ease-out;
+                   -moz-transition:all 250ms ease-out;
+                     -o-transition:all 250ms ease-out;
+                        transition:all 250ms ease-out;
 
                 @for $i from 0 through 10 {
                     &.size-#{$i} {
@@ -140,4 +149,12 @@
             width: 2.9em;
         }
     }
+}
+
+.visible .punch-card-hour-data{
+    -webkit-transform:scale(1) !important;
+       -moz-transform:scale(1) !important;
+        -ms-transform:scale(1) !important;
+         -o-transform:scale(1) !important;
+            transform:scale(1) !important;
 }
