@@ -43,6 +43,10 @@
   padding: 0.4em 0.9em;
   margin-top: -2.1em;
   -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
   z-index: 3;
   background: #333333;
   color: #eee;
